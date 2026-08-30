@@ -1,7 +1,7 @@
-# Spectre OP LIS Guide for Virtuoso and MobaXterm
+# Cadence Spectre Operating Point Guide
 
-Privacy-safe, reusable guides for generating and reading Spectre operating-point
-reports from Cadence Virtuoso ADE with MobaXterm.
+Privacy-safe, reusable tutorials for Cadence Virtuoso ADE and Spectre DC
+operating-point workflows.
 
 This repository is a sanitized tutorial. It intentionally replaces personal
 Linux usernames, VM IP addresses, project names, cell names, and local directory
@@ -15,12 +15,20 @@ paths with placeholders such as:
 - `<pdk-root>`
 - `<simulation-root>`
 
-## Available Guides
+## Guides
 
-- [English guide](docs/guide.en.md)
-- [Traditional Chinese guide](docs/guide.zh-TW.md)
-- [Simplified Chinese guide](docs/guide.zh-CN.md)
-- [AI customization prompt](prompts/customize-this-guide.md)
+- Full workflow:
+  - [English](docs/guide.en.md)
+  - [Traditional Chinese](docs/guide.zh-TW.md)
+  - [Simplified Chinese](docs/guide.zh-CN.md)
+- Schematic annotation workflow:
+  - [English](docs/annotate-region.en.md)
+  - [Traditional Chinese](docs/annotate-region.zh-TW.md)
+  - [Simplified Chinese](docs/annotate-region.zh-CN.md)
+- Template:
+  - [`templates/opdump.scs`](templates/opdump.scs)
+- AI customization:
+  - [AI customization prompt](prompts/customize-this-guide.md)
 
 ## What This Guide Covers
 
@@ -29,6 +37,8 @@ paths with placeholders such as:
 - Adding that file to Virtuoso ADE simulation files
 - Running Spectre DC operating-point analysis
 - Finding and reading `oppoint.lis`
+- Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
+- Saving and reloading Virtuoso annotation setup
 - Checking MOS operating regions and saturation margin
 - Saving simulation results safely
 - Troubleshooting common Spectre/ADE issues
@@ -39,3 +49,5 @@ Do not publish real usernames, server IPs, private PDK paths, lab directory
 names, customer names, or unpublished circuit names. Replace them with generic
 placeholders before uploading documentation to a public repository.
 
+Do not commit foundry PDKs, model files, generated `psf` folders, netlists,
+simulation outputs, lock files, or screenshots that reveal private paths.

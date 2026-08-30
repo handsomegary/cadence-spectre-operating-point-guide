@@ -269,6 +269,9 @@ View -> Annotations -> Setup
 
 GUI 適合快速查看；`oppoint.lis` 適合保存、搜尋、比較與版本追蹤。
 
+若要專門設定 schematic 上的 MOS `region` 與 DC OP 欄位，請看
+[在 Virtuoso 顯示並保存 MOS region 與 DC OP 參數](annotate-region.zh-TW.md)。
+
 ## 11. 保存某一次模擬結果
 
 進入該 cell 的 `psf` 資料夾：
@@ -403,4 +406,3 @@ ps -o pid,ppid,stat,etime,cmd -p <pid>
 3. `spectre.out` 顯示 `opDump` 正在寫入 `../psf/oppoint.lis`。
 4. 對應 cell 的 `psf` 目錄存在 `oppoint.lis`。
 5. 使用 `less` 能看到 MOS 的 `gm`、`gds`、`vgs`、`vds`、`vdsat`、`region` 等資料。
-

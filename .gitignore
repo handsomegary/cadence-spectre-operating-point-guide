@@ -1,4 +1,33 @@
+# Cadence logs and locks
+CDS.log*
+*.cdslck
+*.log
+
+# Spectre/ADE generated data
+simulation/
+psf/
+netlist/
+input.scs
+spectre.out
+*.raw
+*.dc
+*.ac
+*.tran
+*.trn
+*.ic
+*.ahdlSimDB/
+oppoint*.lis
+
+# Foundry/PDK/model content: never commit licensed files
+PDK*/
+pdk*/
+models/
+*.mdl
+*.model
+
+# Editor/OS files
+*~
+*.swp
 .DS_Store
 Thumbs.db
 desktop.ini
-

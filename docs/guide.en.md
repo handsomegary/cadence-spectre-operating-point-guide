@@ -274,6 +274,9 @@ View -> Annotations -> Setup
 The GUI is convenient for quick inspection. `oppoint.lis` is better for saving,
 searching, comparing, and version tracking.
 
+For a dedicated schematic annotation workflow, see
+[Annotate MOS Region and DC OP Parameters](annotate-region.en.md).
+
 ## 11. Save One Simulation Result
 
 Enter the cell `psf` directory:
@@ -414,4 +417,3 @@ The flow is working when:
 4. The cell `psf` folder contains `oppoint.lis`.
 5. `less` can display MOS operating-point data such as `gm`, `gds`, `vgs`,
    `vds`, `vdsat`, and `region`.
-

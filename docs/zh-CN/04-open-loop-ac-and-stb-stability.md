@@ -581,7 +581,8 @@ temperature、supply、load 与 mismatch checks。
 
 ## 17. 下一步：Closed-Loop Transient
 
-Nominal AC 与 STB 完成后，可以进入 closed-loop transient analysis。
+Nominal AC 与 STB 完成后，可以进入
+[第 5 章：Closed-Loop Transient Automation](05-closed-loop-transient-automation.md)。
 
 量测项目：
 

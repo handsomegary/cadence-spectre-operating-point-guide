@@ -1,4 +1,4 @@
-# 第 5 章：Schematic DC OP Annotation
+# 第 6 章：Schematic DC OP Annotation
 
 本文说明如何把 MOS 的 DC operating-point 参数，例如 `region`、`gm`、
 `vgs`、`vds`、`vdsat`，直接标示在 Cadence Virtuoso schematic 上，并保存

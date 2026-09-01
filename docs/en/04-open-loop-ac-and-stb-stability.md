@@ -595,7 +595,8 @@ corner, temperature, supply, load, and mismatch checks before signing off.
 
 ## 17. Next Step: Closed-Loop Transient
 
-After nominal AC and STB are complete, move to closed-loop transient analysis.
+After nominal AC and STB are complete, move to
+[Chapter 5: Closed-Loop Transient Automation](05-closed-loop-transient-automation.md).
 
 Measure:
 

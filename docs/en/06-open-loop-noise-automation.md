@@ -591,5 +591,5 @@ complete.
 
 If the real signal bandwidth and low-frequency cutoff are known, continue with
 closed-loop band-limited integrated noise. If the goal is full OTA
-characterization, the next independent analysis is CMRR, followed by PSRR+ and
-PSRR-.
+characterization, continue with [Chapter 7: CMRR Automation](07-cmrr-automation.md),
+followed by PSRR+ and PSRR-.

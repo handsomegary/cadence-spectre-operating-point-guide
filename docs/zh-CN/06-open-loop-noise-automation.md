@@ -561,5 +561,5 @@ NM2 tail device：
 Baseline open-loop noise 与 device contribution characterization 已完成。
 
 若已知实际 signal bandwidth 与 low-frequency cutoff，下一步是 closed-loop
-band-limited integrated noise。若目标是完整 OTA characterization，下一个独立分析是
-CMRR，之后是 PSRR+ 与 PSRR-。
+band-limited integrated noise。若目标是完整 OTA characterization，请接着看
+[第 7 章：CMRR Automation](07-cmrr-automation.md)，之后是 PSRR+ 与 PSRR-。

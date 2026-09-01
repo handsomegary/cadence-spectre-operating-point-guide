@@ -1,7 +1,10 @@
-# Spectre Operating-Point LIS SOP
+# 第 2 章：导出与阅读 `oppoint.lis`
 
 本 SOP 说明如何在 Cadence Virtuoso ADE 执行 Spectre DC operating point，并把
 MOS 的工作点数据输出成可由 MobaXterm 阅读的 `oppoint.lis`。
+
+若要先看 ADE L 里不做 sweep 的基本 DC operating-point 设置，请从
+[第 1 章：DC Operating-Point Simulation and Automation](01-dc-operating-point-simulation.zh-CN.md) 开始。
 
 本文中的 `oppoint.lis` 是 Spectre 生成的 ASCII operating-point 报告，不是
 HSPICE 仿真器原生的 `.lis` 文件。
@@ -270,7 +273,7 @@ View -> Annotations -> Setup
 GUI 适合快速查看；`oppoint.lis` 适合保存、搜索、比较与版本追踪。
 
 若要专门设置 schematic 上的 MOS `region` 与 DC OP 字段，请看
-[在 Virtuoso 显示并保存 MOS region 与 DC OP 参数](annotate-region.zh-CN.md)。
+[第 3 章：Schematic DC OP Annotation](03-schematic-op-annotation.zh-CN.md)。
 
 ## 11. 保存某一次仿真结果
 

@@ -38,9 +38,12 @@ Then generate:
 1. A privacy-safe public version using placeholders.
 2. A private local version using my actual paths.
 3. A checklist for verifying that oppoint.lis was generated.
-4. A schematic annotation guide for displaying MOS region and key DC OP values.
-5. A characterization workflow for an OTA or amplifier testbench.
-6. A troubleshooting section for missing oppoint.lis, undefined models,
+4. A step-by-step DC operating-point chapter that explains exactly when to keep
+   `dc` selected, enable `Save DC Operating Point`, leave Sweep Variable boxes
+   unchecked, press OK, and run ADE L.
+5. A schematic annotation guide for displaying MOS region and key DC OP values.
+6. A characterization workflow for an OTA or amplifier testbench.
+7. A troubleshooting section for missing oppoint.lis, undefined models,
    annotation fields not appearing, locked CDS.log, and abnormal MOS operating
    points.
 
@@ -59,6 +62,7 @@ The SOP should cover:
 - Connecting with MobaXterm
 - Creating shared opdump.scs
 - Adding opdump.scs to ADE Definition Files
+- Running pure DC operating point without accidentally enabling a sweep
 - Running DC operating-point simulation
 - Verifying input.scs includes opdump.scs
 - Checking spectre.out

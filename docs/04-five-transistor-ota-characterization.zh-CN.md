@@ -1,4 +1,4 @@
-# 第 3 章：Five-Transistor OTA Characterization Workflow
+# 第 4 章：Five-Transistor OTA Characterization Workflow
 
 本章整理一个通用的 five-transistor one-stage OTA characterization 流程，适用于
 Cadence Virtuoso ADE 与 Spectre。
@@ -569,4 +569,3 @@ CMRR = 20 log10(|Ad / Acm|)
 2. 真实 input swing 必须用 DC 或 transient nonlinear simulation 验证。
 3. AC analysis 给的是 bias point 附近的 local transfer function；只有真实信号仍在
    small-signal region 时，才能线性缩放到真实小信号电路。
-

@@ -1,4 +1,4 @@
-# 在 Virtuoso 顯示並保存 MOS `region` 與 DC OP 參數
+# 第 3 章：Schematic DC OP Annotation
 
 本文件說明如何把 MOS 的 DC operating-point 參數，例如 `region`、`gm`、
 `vgs`、`vds`、`vdsat`，直接標示在 Cadence Virtuoso schematic 上，並保存
@@ -207,4 +207,3 @@ Click NMOS -> Instance Name = * -> set one field to region -> Apply
 Click PMOS -> Instance Name = * -> set one field to region -> Apply
 Save at Absolute Path
 ```
-

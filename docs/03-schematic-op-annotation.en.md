@@ -1,4 +1,4 @@
-# Annotate MOS Region and DC OP Parameters in Virtuoso
+# Chapter 3: Schematic DC OP Annotation
 
 This guide explains how to display MOS DC operating-point parameters such as
 `region`, `gm`, `vgs`, `vds`, and `vdsat` directly on a Cadence Virtuoso
@@ -220,4 +220,3 @@ Click NMOS -> Instance Name = * -> set one field to region -> Apply
 Click PMOS -> Instance Name = * -> set one field to region -> Apply
 Save at Absolute Path
 ```
-

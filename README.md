@@ -15,20 +15,24 @@ paths with placeholders such as:
 - `<pdk-root>`
 - `<simulation-root>`
 
-## Guides
+## Chapters
 
-- Full workflow:
-  - [English](docs/guide.en.md)
-  - [Traditional Chinese](docs/guide.zh-TW.md)
-  - [Simplified Chinese](docs/guide.zh-CN.md)
-- Schematic annotation workflow:
-  - [English](docs/annotate-region.en.md)
-  - [Traditional Chinese](docs/annotate-region.zh-TW.md)
-  - [Simplified Chinese](docs/annotate-region.zh-CN.md)
-- Chapter 3, OTA characterization workflow:
-  - [English](docs/03-five-transistor-ota-characterization.en.md)
-  - [Traditional Chinese](docs/03-five-transistor-ota-characterization.zh-TW.md)
-  - [Simplified Chinese](docs/03-five-transistor-ota-characterization.zh-CN.md)
+- Chapter 1, DC operating-point simulation and automation:
+  - [English](docs/01-dc-operating-point-simulation.en.md)
+  - [Traditional Chinese](docs/01-dc-operating-point-simulation.zh-TW.md)
+  - [Simplified Chinese](docs/01-dc-operating-point-simulation.zh-CN.md)
+- Chapter 2, export and read `oppoint.lis`:
+  - [English](docs/02-export-and-read-oppoint-lis.en.md)
+  - [Traditional Chinese](docs/02-export-and-read-oppoint-lis.zh-TW.md)
+  - [Simplified Chinese](docs/02-export-and-read-oppoint-lis.zh-CN.md)
+- Chapter 3, schematic DC OP annotation:
+  - [English](docs/03-schematic-op-annotation.en.md)
+  - [Traditional Chinese](docs/03-schematic-op-annotation.zh-TW.md)
+  - [Simplified Chinese](docs/03-schematic-op-annotation.zh-CN.md)
+- Chapter 4, OTA characterization workflow:
+  - [English](docs/04-five-transistor-ota-characterization.en.md)
+  - [Traditional Chinese](docs/04-five-transistor-ota-characterization.zh-TW.md)
+  - [Simplified Chinese](docs/04-five-transistor-ota-characterization.zh-CN.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
 - AI customization:
@@ -40,6 +44,7 @@ paths with placeholders such as:
 - Creating a shared `opdump.scs`
 - Adding that file to Virtuoso ADE simulation files
 - Running Spectre DC operating-point analysis
+- Distinguishing pure DC operating point from DC sweep characterization
 - Finding and reading `oppoint.lis`
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup

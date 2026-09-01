@@ -17,22 +17,21 @@ paths with placeholders such as:
 
 ## Chapters
 
-- Chapter 1, DC operating-point simulation and automation:
-  - [English](docs/01-dc-operating-point-simulation.en.md)
-  - [Traditional Chinese](docs/01-dc-operating-point-simulation.zh-TW.md)
-  - [Simplified Chinese](docs/01-dc-operating-point-simulation.zh-CN.md)
-- Chapter 2, export and read `oppoint.lis`:
-  - [English](docs/02-export-and-read-oppoint-lis.en.md)
-  - [Traditional Chinese](docs/02-export-and-read-oppoint-lis.zh-TW.md)
-  - [Simplified Chinese](docs/02-export-and-read-oppoint-lis.zh-CN.md)
-- Chapter 3, schematic DC OP annotation:
-  - [English](docs/03-schematic-op-annotation.en.md)
-  - [Traditional Chinese](docs/03-schematic-op-annotation.zh-TW.md)
-  - [Simplified Chinese](docs/03-schematic-op-annotation.zh-CN.md)
-- Chapter 4, OTA characterization workflow:
-  - [English](docs/04-five-transistor-ota-characterization.en.md)
-  - [Traditional Chinese](docs/04-five-transistor-ota-characterization.zh-TW.md)
-  - [Simplified Chinese](docs/04-five-transistor-ota-characterization.zh-CN.md)
+- English:
+  - [Chapter 1: DC operating-point simulation and automation](docs/en/01-dc-operating-point-simulation.md)
+  - [Chapter 2: Export and read `oppoint.lis`](docs/en/02-export-and-read-oppoint-lis.md)
+  - [Chapter 3: Schematic DC OP annotation](docs/en/03-schematic-op-annotation.md)
+  - [Chapter 4: Five-transistor OTA characterization](docs/en/04-five-transistor-ota-characterization.md)
+- Traditional Chinese:
+  - [Chapter 1: DC operating-point simulation and automation](docs/zh-TW/01-dc-operating-point-simulation.md)
+  - [Chapter 2: Export and read `oppoint.lis`](docs/zh-TW/02-export-and-read-oppoint-lis.md)
+  - [Chapter 3: Schematic DC OP annotation](docs/zh-TW/03-schematic-op-annotation.md)
+  - [Chapter 4: Five-transistor OTA characterization](docs/zh-TW/04-five-transistor-ota-characterization.md)
+- Simplified Chinese:
+  - [Chapter 1: DC operating-point simulation and automation](docs/zh-CN/01-dc-operating-point-simulation.md)
+  - [Chapter 2: Export and read `oppoint.lis`](docs/zh-CN/02-export-and-read-oppoint-lis.md)
+  - [Chapter 3: Schematic DC OP annotation](docs/zh-CN/03-schematic-op-annotation.md)
+  - [Chapter 4: Five-transistor OTA characterization](docs/zh-CN/04-five-transistor-ota-characterization.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
 - AI customization:

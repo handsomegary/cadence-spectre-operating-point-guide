@@ -4,7 +4,7 @@
 MOS 的工作點資料輸出成可由 MobaXterm 閱讀的 `oppoint.lis`。
 
 若要先看 ADE L 裡不做 sweep 的基本 DC operating-point 設定，請從
-[第 1 章：DC Operating-Point Simulation and Automation](01-dc-operating-point-simulation.zh-TW.md) 開始。
+[第 1 章：DC Operating-Point Simulation and Automation](01-dc-operating-point-simulation.md) 開始。
 
 本文件中的 `oppoint.lis` 是 Spectre 產生的 ASCII operating-point 報告，不是
 HSPICE 模擬器原生的 `.lis` 檔。
@@ -273,7 +273,7 @@ View -> Annotations -> Setup
 GUI 適合快速查看；`oppoint.lis` 適合保存、搜尋、比較與版本追蹤。
 
 若要專門設定 schematic 上的 MOS `region` 與 DC OP 欄位，請看
-[第 3 章：Schematic DC OP Annotation](03-schematic-op-annotation.zh-TW.md)。
+[第 3 章：Schematic DC OP Annotation](03-schematic-op-annotation.md)。
 
 ## 11. 保存某一次模擬結果
 

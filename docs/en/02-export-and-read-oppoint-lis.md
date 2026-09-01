@@ -5,7 +5,7 @@ Virtuoso ADE and export MOS operating-point data into an `oppoint.lis` file that
 can be read from MobaXterm.
 
 For the basic no-sweep DC operating-point setup in ADE L, start with
-[Chapter 1: DC Operating-Point Simulation and Automation](01-dc-operating-point-simulation.en.md).
+[Chapter 1: DC Operating-Point Simulation and Automation](01-dc-operating-point-simulation.md).
 
 `oppoint.lis` in this guide is a Spectre-generated ASCII operating-point report.
 It is not a native HSPICE `.lis` file.
@@ -278,7 +278,7 @@ The GUI is convenient for quick inspection. `oppoint.lis` is better for saving,
 searching, comparing, and version tracking.
 
 For a dedicated schematic annotation workflow, see
-[Chapter 3: Schematic DC OP Annotation](03-schematic-op-annotation.en.md).
+[Chapter 3: Schematic DC OP Annotation](03-schematic-op-annotation.md).
 
 ## 11. Save One Simulation Result
 

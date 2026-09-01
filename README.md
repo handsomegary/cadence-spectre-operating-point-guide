@@ -23,24 +23,27 @@ paths with placeholders such as:
   - [Chapter 3: DC sweep automation and data extraction](docs/en/03-dc-sweep-automation-and-data-extraction.md)
   - [Chapter 4: Open-loop AC and STB feedback stability](docs/en/04-open-loop-ac-and-stb-stability.md)
   - [Chapter 5: Closed-loop transient automation](docs/en/05-closed-loop-transient-automation.md)
-  - [Chapter 6: Schematic DC OP annotation](docs/en/06-schematic-op-annotation.md)
-  - [Chapter 7: Five-transistor OTA characterization](docs/en/07-five-transistor-ota-characterization.md)
+  - [Chapter 6: Open-loop noise automation](docs/en/06-open-loop-noise-automation.md)
+  - [Chapter 7: Schematic DC OP annotation](docs/en/07-schematic-op-annotation.md)
+  - [Chapter 8: Five-transistor OTA characterization](docs/en/08-five-transistor-ota-characterization.md)
 - Traditional Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-TW/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-TW/02-export-and-read-oppoint-lis.md)
   - [Chapter 3: DC sweep automation and data extraction](docs/zh-TW/03-dc-sweep-automation-and-data-extraction.md)
   - [Chapter 4: Open-loop AC and STB feedback stability](docs/zh-TW/04-open-loop-ac-and-stb-stability.md)
   - [Chapter 5: Closed-loop transient automation](docs/zh-TW/05-closed-loop-transient-automation.md)
-  - [Chapter 6: Schematic DC OP annotation](docs/zh-TW/06-schematic-op-annotation.md)
-  - [Chapter 7: Five-transistor OTA characterization](docs/zh-TW/07-five-transistor-ota-characterization.md)
+  - [Chapter 6: Open-loop noise automation](docs/zh-TW/06-open-loop-noise-automation.md)
+  - [Chapter 7: Schematic DC OP annotation](docs/zh-TW/07-schematic-op-annotation.md)
+  - [Chapter 8: Five-transistor OTA characterization](docs/zh-TW/08-five-transistor-ota-characterization.md)
 - Simplified Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-CN/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-CN/02-export-and-read-oppoint-lis.md)
   - [Chapter 3: DC sweep automation and data extraction](docs/zh-CN/03-dc-sweep-automation-and-data-extraction.md)
   - [Chapter 4: Open-loop AC and STB feedback stability](docs/zh-CN/04-open-loop-ac-and-stb-stability.md)
   - [Chapter 5: Closed-loop transient automation](docs/zh-CN/05-closed-loop-transient-automation.md)
-  - [Chapter 6: Schematic DC OP annotation](docs/zh-CN/06-schematic-op-annotation.md)
-  - [Chapter 7: Five-transistor OTA characterization](docs/zh-CN/07-five-transistor-ota-characterization.md)
+  - [Chapter 6: Open-loop noise automation](docs/zh-CN/06-open-loop-noise-automation.md)
+  - [Chapter 7: Schematic DC OP annotation](docs/zh-CN/07-schematic-op-annotation.md)
+  - [Chapter 8: Five-transistor OTA characterization](docs/zh-CN/08-five-transistor-ota-characterization.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
 - AI customization:
@@ -62,6 +65,8 @@ paths with placeholders such as:
 - Reading formal phase margin and gain margin results from `stb_margin`
 - Automating closed-loop transient step response simulations
 - Measuring rise/fall time, slew rate, settling time, overshoot, and undershoot
+- Automating open-loop noise simulations
+- Calculating input-referred noise, white-noise floor, 1/f corner, and integrated RMS noise
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup
 - Characterizing a five-transistor OTA with ICMR, output swing, DC gain,

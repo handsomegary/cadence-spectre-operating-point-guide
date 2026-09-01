@@ -1,4 +1,4 @@
-# Chapter 7: Five-Transistor OTA Characterization Workflow
+# Chapter 8: Five-Transistor OTA Characterization Workflow
 
 This chapter describes a practical characterization flow for a generic
 five-transistor, one-stage OTA in Cadence Virtuoso ADE with Spectre.
@@ -18,9 +18,10 @@ This workflow covers:
 5. STB stability analysis
 6. Unity-gain buffer large-signal transient response
 7. Slew rate, rise/fall time, overshoot, and 1% settling time
-8. Why AC magnitude normalization does not equal real large-signal input swing
-9. Safe shutdown steps for Virtuoso, MobaXterm, VMware, and Windows
-10. Suggested next characterization items
+8. Open-loop noise and input-referred noise
+9. Why AC magnitude normalization does not equal real large-signal input swing
+10. Safe shutdown steps for Virtuoso, MobaXterm, VMware, and Windows
+11. Suggested next characterization items
 
 The most important idea:
 

@@ -1,4 +1,4 @@
-# 第 4 章：Five-Transistor OTA Characterization Workflow
+# 第 5 章：Five-Transistor OTA Characterization Workflow
 
 本章整理一个通用的 five-transistor one-stage OTA characterization 流程，适用于
 Cadence Virtuoso ADE 与 Spectre。

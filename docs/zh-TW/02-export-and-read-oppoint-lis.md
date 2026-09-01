@@ -273,7 +273,7 @@ View -> Annotations -> Setup
 GUI 適合快速查看；`oppoint.lis` 適合保存、搜尋、比較與版本追蹤。
 
 若要專門設定 schematic 上的 MOS `region` 與 DC OP 欄位，請看
-[第 3 章：Schematic DC OP Annotation](03-schematic-op-annotation.md)。
+[第 4 章：Schematic DC OP Annotation](04-schematic-op-annotation.md)。
 
 ## 11. 保存某一次模擬結果
 

@@ -18,7 +18,9 @@ open-loop noise 自动化流程。
 6. 1/f noise corner 提取
 7. Integrated RMS output 与 input-referred noise
 8. Working checkpoints
-9. 常见错误与安全判读
+9. Device noise contribution ranking
+10. Noise optimization priority
+11. 常见错误与安全判读
 
 这些命令默认在远端 Linux Cadence environment 执行，通常由 MobaXterm 或其他 SSH
 terminal 贴上。
@@ -311,7 +313,9 @@ Integrated input-referred noise 示例：
    integrated noise。
 6. Open-loop output-referred integrated noise 不会自动等于最终 closed-loop system output
    noise。Closed-loop noise 还需要 noise gain、feedback network 与实际 signal bandwidth。
-7. 在取得 device noise contribution summary 前，不要断言哪一颗 device 主导 noise。
+7. Device contribution ranking 可以判断不同频率区间由哪些元件主导。本例中，低频
+   integrated noise 主要由 PM current-mirror flicker noise 主导；高频 spot noise
+   与 band-limited noise 则主要由 NM input-pair channel noise 主导。
 
 ## 11. Working Checkpoints
 
@@ -378,36 +382,184 @@ White-noise estimation band 可能没有选在真正平坦的 white-noise region
 ## 13. 完成清单
 
 ```text
-[ ] Differential source and input normalization confirmed.
-[ ] Output node and load capacitance confirmed.
-[ ] Independent noise results directory created.
-[ ] Noise OCEAN script created and verified.
-[ ] Noise simulation completed over the intended frequency range.
-[ ] Output noise raw file saved.
-[ ] Numeric point count and frequency range verified.
-[ ] AC/noise frequency grid verified.
-[ ] Input-referred spot noise calculated.
-[ ] Integrated RMS noise calculated.
-[ ] White-noise floor refined from a flat band.
-[ ] 1/f noise corner extracted.
-[ ] Final analysis report saved.
-[ ] OCEAN working checkpoint created.
-[ ] Analyzer working checkpoint created.
-[ ] Device noise contribution summary collected.
+[x] Differential source and input normalization confirmed.
+[x] Output node and load capacitance confirmed.
+[x] Independent noise results directory created.
+[x] Noise OCEAN script created and verified.
+[x] Noise simulation completed over the intended frequency range.
+[x] Output noise raw file saved.
+[x] Numeric point count and frequency range verified.
+[x] AC/noise frequency grid verified.
+[x] Input-referred spot noise calculated.
+[x] Integrated RMS noise calculated.
+[x] White-noise floor refined from a flat band.
+[x] 1/f noise corner extracted.
+[x] Final analysis report saved.
+[x] OCEAN working checkpoint created.
+[x] Analyzer working checkpoint created.
+[x] Device noise contribution summary collected.
 [ ] Closed-loop integrated noise calculated for the real application bandwidth.
 ```
 
-## 14. 下一步
+## 14. Device Noise Contribution Ranking
 
-下一个 noise 子分析是 device noise contribution ranking：
+正式 contribution ranking 文件建议保存在 noise result directory：
 
 ```text
-Input pair contribution
-Current mirror load contribution
-Tail device contribution
-Other bias or load contribution
+/home/<linux-user>/simulation/<ota-project>_ocean/noise_openloop/noise_contributor_ranking.txt
 ```
 
-完成 device contribution ranking 后，才能判断要优先增加 input-pair area、调整 current
-mirror、修改 bias device，或改变 operating current。Noise 之后可继续整理 CMRR 与 PSRR
-自动化。
+以下示例 ranking summary 均正规化为 100 percent。
+
+Spot noise at 1 kHz：
+
+```text
+PM1: 42.391068 percent
+PM0: 39.645138 percent
+NM1: 8.991841 percent
+NM0: 8.968841 percent
+NM2: 0.003113 percent
+
+PM current mirror total: 82.036206 percent
+NM input-pair total:    17.960682 percent
+Flicker noise:          99.996394 percent
+```
+
+在 1 kHz，spot noise 几乎完全是 flicker noise，PM current mirror 是主因。
+
+Integrated noise from 1 Hz to 1 kHz：
+
+```text
+PM1: 47.367632 percent
+PM0: 44.299339 percent
+NM1: 4.171127 percent
+NM0: 4.160458 percent
+NM2: 0.001444 percent
+
+PM current mirror total: 91.666971 percent
+NM input-pair total:     8.331585 percent
+Flicker noise:           99.999677 percent
+```
+
+超低频 integrated noise 更强烈地由 PM current-mirror flicker noise 主导。
+
+Spot noise at the 13.8629 MHz flicker corner：
+
+```text
+NM1: 34.421709 percent
+NM0: 34.334388 percent
+PM1: 16.137037 percent
+PM0: 15.090972 percent
+NM2: 0.015895 percent
+
+NM input-pair total:     68.756097 percent
+PM current mirror total: 31.228009 percent
+Flicker noise:           54.608014 percent
+Channel noise:           45.232433 percent
+```
+
+在 corner frequency，主导元件转为 NM input pair。Flicker 与 channel noise 接近交接，
+符合 corner definition。
+
+Integrated noise from 1 Hz to the flicker corner：
+
+```text
+PM1: 40.654056 percent
+PM0: 38.020624 percent
+NM1: 10.674357 percent
+NM0: 10.647070 percent
+NM2: 0.003892 percent
+
+PM current mirror total: 78.674680 percent
+NM input-pair total:    21.321427 percent
+Flicker noise:          97.418715 percent
+```
+
+虽然 corner spot noise 已由 NM input pair 主导，但从 1 Hz 积分到 corner 的总 noise
+energy 仍由低频 PM current-mirror flicker noise 主导。
+
+Spot noise at 200 MHz：
+
+```text
+NM0: 34.490932 percent
+NM1: 34.426387 percent
+PM1: 16.026814 percent
+PM0: 14.829783 percent
+NM2: 0.226083 percent
+
+NM input-pair total:     68.917319 percent
+PM current mirror total: 30.856597 percent
+Channel noise:           91.422744 percent
+Flicker noise:            8.254806 percent
+```
+
+在 200 MHz，white-noise spot behavior 由 NM input-pair channel noise 主导。
+
+Integrated noise from 100 MHz to 400 MHz：
+
+```text
+NM0: 34.549672 percent
+NM1: 34.487746 percent
+PM1: 15.965238 percent
+PM0: 14.773962 percent
+NM2: 0.223383 percent
+
+NM input-pair total:     69.037418 percent
+PM current mirror total: 30.739200 percent
+Channel noise:           89.743673 percent
+Flicker noise:            9.939800 percent
+```
+
+整个 white-noise estimation band 也由 NM input pair 主导。
+
+Integrated noise from 1 Hz to UGF：
+
+```text
+PM1: 38.308080 percent
+PM0: 35.819782 percent
+NM1: 12.942433 percent
+NM0: 12.915737 percent
+NM2: 0.013968 percent
+
+PM current mirror total: 74.127862 percent
+NM input-pair total:    25.858170 percent
+Flicker noise:          91.079408 percent
+Channel noise:           8.889238 percent
+```
+
+即使积分到 949.5 MHz unity-gain frequency，从 1 Hz 起算的总 noise energy 仍由
+PM current-mirror flicker noise 主导。Integration lower bound 会强烈影响最后结论。
+
+## 15. Noise Optimization Priority
+
+低频、DC 或 precision-amplifier application：
+
+1. 优先处理 PM0/PM1 current-mirror flicker noise。
+2. 可评估增加 PM0/PM1 gate area、增加 channel length，或调整 current density。
+3. 修改 PM mirror 后必须重跑 AC、STB、transient 与 noise，因为 PM mirror sizing 也会
+   影响 output-node capacitance、gain、UGF、phase margin 与 settling behavior。
+
+高频或 broadband application：
+
+1. 优先处理 NM0/NM1 input-pair channel noise。
+2. 可评估提高 input-pair transconductance、重新选择 gm/Id operating point，或调整
+   bias current。
+3. 增加 input-pair width 可能降低部分 noise，但也会增加 input capacitance 并影响速度。
+
+NM2 tail device：
+
+1. 在所有 spot 与 integrated cases 中，NM2 都低于约 `0.23 percent`。
+2. 如果唯一目标是降低 noise，不应优先把面积或功耗花在 NM2。
+
+对称性检查：
+
+1. NM0 与 NM1 几乎相等，代表 input-pair symmetry 良好。
+2. PM0 与 PM1 也很接近，本例中 PM1 通常略高于 PM0，但没有看到单一 PM device 异常。
+
+## 16. 下一步
+
+Baseline open-loop noise 与 device contribution characterization 已完成。
+
+若已知实际 signal bandwidth 与 low-frequency cutoff，下一步是 closed-loop
+band-limited integrated noise。若目标是完整 OTA characterization，下一个独立分析是
+CMRR，之后是 PSRR+ 与 PSRR-。

@@ -19,7 +19,9 @@ This workflow covers:
 6. 1/f noise corner extraction
 7. Integrated RMS output and input-referred noise
 8. Working checkpoints
-9. Common errors and safe interpretation
+9. Device noise contribution ranking
+10. Noise optimization priority
+11. Common errors and safe interpretation
 
 The commands are intended for a remote Linux Cadence environment accessed from
 MobaXterm or another SSH terminal.
@@ -323,8 +325,10 @@ Example interpretation:
 6. Open-loop output-referred integrated noise is not automatically the final
    closed-loop system output noise. Closed-loop noise requires the noise gain,
    feedback network, and real signal bandwidth.
-7. Do not identify a dominant device before reading a device noise contribution
-   summary.
+7. Device contribution ranking shows which devices dominate each frequency
+   range. In this example, PM current-mirror flicker noise dominates
+   low-frequency integrated noise, while NM input-pair channel noise dominates
+   high-frequency spot and band-limited noise.
 
 ## 11. Working Checkpoints
 
@@ -395,36 +399,197 @@ noise-convergence error and does not invalidate the raw data by itself.
 ## 13. Completion Checklist
 
 ```text
-[ ] Differential source and input normalization confirmed.
-[ ] Output node and load capacitance confirmed.
-[ ] Independent noise results directory created.
-[ ] Noise OCEAN script created and verified.
-[ ] Noise simulation completed over the intended frequency range.
-[ ] Output noise raw file saved.
-[ ] Numeric point count and frequency range verified.
-[ ] AC/noise frequency grid verified.
-[ ] Input-referred spot noise calculated.
-[ ] Integrated RMS noise calculated.
-[ ] White-noise floor refined from a flat band.
-[ ] 1/f noise corner extracted.
-[ ] Final analysis report saved.
-[ ] OCEAN working checkpoint created.
-[ ] Analyzer working checkpoint created.
-[ ] Device noise contribution summary collected.
+[x] Differential source and input normalization confirmed.
+[x] Output node and load capacitance confirmed.
+[x] Independent noise results directory created.
+[x] Noise OCEAN script created and verified.
+[x] Noise simulation completed over the intended frequency range.
+[x] Output noise raw file saved.
+[x] Numeric point count and frequency range verified.
+[x] AC/noise frequency grid verified.
+[x] Input-referred spot noise calculated.
+[x] Integrated RMS noise calculated.
+[x] White-noise floor refined from a flat band.
+[x] 1/f noise corner extracted.
+[x] Final analysis report saved.
+[x] OCEAN working checkpoint created.
+[x] Analyzer working checkpoint created.
+[x] Device noise contribution summary collected.
 [ ] Closed-loop integrated noise calculated for the real application bandwidth.
 ```
 
-## 14. Next Step
+## 14. Device Noise Contribution Ranking
 
-The next useful noise sub-analysis is device noise contribution ranking:
+Save the formal contribution ranking in the noise result directory:
 
 ```text
-Input pair contribution
-Current mirror load contribution
-Tail device contribution
-Other bias or load contribution
+/home/<linux-user>/simulation/<ota-project>_ocean/noise_openloop/noise_contributor_ranking.txt
 ```
 
-Only after device contribution ranking should you decide whether to increase
-input-pair area, adjust the current mirror, modify the bias device, or change
-the operating current. After noise, continue with CMRR and PSRR automation.
+The example ranking summaries below are normalized to 100 percent for the
+reported contributors.
+
+Spot noise at 1 kHz:
+
+```text
+PM1: 42.391068 percent
+PM0: 39.645138 percent
+NM1: 8.991841 percent
+NM0: 8.968841 percent
+NM2: 0.003113 percent
+
+PM current mirror total: 82.036206 percent
+NM input-pair total:    17.960682 percent
+Flicker noise:          99.996394 percent
+```
+
+At 1 kHz, the spot noise is almost entirely flicker noise. The PM current
+mirror is the dominant source.
+
+Integrated noise from 1 Hz to 1 kHz:
+
+```text
+PM1: 47.367632 percent
+PM0: 44.299339 percent
+NM1: 4.171127 percent
+NM0: 4.160458 percent
+NM2: 0.001444 percent
+
+PM current mirror total: 91.666971 percent
+NM input-pair total:     8.331585 percent
+Flicker noise:           99.999677 percent
+```
+
+Very-low-frequency integrated noise is even more strongly dominated by PM
+current-mirror flicker noise.
+
+Spot noise at the 13.8629 MHz flicker corner:
+
+```text
+NM1: 34.421709 percent
+NM0: 34.334388 percent
+PM1: 16.137037 percent
+PM0: 15.090972 percent
+NM2: 0.015895 percent
+
+NM input-pair total:     68.756097 percent
+PM current mirror total: 31.228009 percent
+Flicker noise:           54.608014 percent
+Channel noise:           45.232433 percent
+```
+
+At the corner frequency, the dominant devices shift to the NM input pair.
+Flicker and channel noise are close to handoff, which matches the corner
+definition.
+
+Integrated noise from 1 Hz to the flicker corner:
+
+```text
+PM1: 40.654056 percent
+PM0: 38.020624 percent
+NM1: 10.674357 percent
+NM0: 10.647070 percent
+NM2: 0.003892 percent
+
+PM current mirror total: 78.674680 percent
+NM input-pair total:    21.321427 percent
+Flicker noise:          97.418715 percent
+```
+
+Although the corner spot noise is already dominated by the NM input pair, the
+integrated energy from 1 Hz to the corner is still dominated by low-frequency
+PM current-mirror flicker noise.
+
+Spot noise at 200 MHz:
+
+```text
+NM0: 34.490932 percent
+NM1: 34.426387 percent
+PM1: 16.026814 percent
+PM0: 14.829783 percent
+NM2: 0.226083 percent
+
+NM input-pair total:     68.917319 percent
+PM current mirror total: 30.856597 percent
+Channel noise:           91.422744 percent
+Flicker noise:            8.254806 percent
+```
+
+At 200 MHz, white-noise spot behavior is dominated by NM input-pair channel
+noise.
+
+Integrated noise from 100 MHz to 400 MHz:
+
+```text
+NM0: 34.549672 percent
+NM1: 34.487746 percent
+PM1: 15.965238 percent
+PM0: 14.773962 percent
+NM2: 0.223383 percent
+
+NM input-pair total:     69.037418 percent
+PM current mirror total: 30.739200 percent
+Channel noise:           89.743673 percent
+Flicker noise:            9.939800 percent
+```
+
+The full white-noise estimation band is also dominated by the NM input pair.
+
+Integrated noise from 1 Hz to UGF:
+
+```text
+PM1: 38.308080 percent
+PM0: 35.819782 percent
+NM1: 12.942433 percent
+NM0: 12.915737 percent
+NM2: 0.013968 percent
+
+PM current mirror total: 74.127862 percent
+NM input-pair total:    25.858170 percent
+Flicker noise:          91.079408 percent
+Channel noise:           8.889238 percent
+```
+
+Even when integrated up to the 949.5 MHz unity-gain frequency, total noise
+energy starting from 1 Hz is still dominated by PM current-mirror flicker noise.
+The integration lower bound strongly affects the final conclusion.
+
+## 15. Noise Optimization Priority
+
+For low-frequency, DC, or precision-amplifier applications:
+
+1. Prioritize PM0/PM1 current-mirror flicker noise.
+2. Consider increasing PM0/PM1 gate area, increasing channel length, or
+   adjusting current density.
+3. Re-run AC, STB, transient, and noise after changing the PM mirror, because
+   PM mirror sizing also affects output-node capacitance, gain, UGF, phase
+   margin, and settling behavior.
+
+For high-frequency or broadband applications:
+
+1. Prioritize NM0/NM1 input-pair channel noise.
+2. Consider increasing input-pair transconductance, reselecting the gm/Id
+   operating point, or adjusting bias current.
+3. Increasing input-pair width can reduce part of the noise, but it also
+   increases input capacitance and affects speed.
+
+For the NM2 tail device:
+
+1. NM2 remains below about `0.23 percent` in all spot and integrated cases.
+2. Do not spend area or power on NM2 first if the only goal is noise reduction.
+
+For symmetry checks:
+
+1. NM0 and NM1 are nearly equal, which supports good input-pair symmetry.
+2. PM0 and PM1 are also close, with PM1 usually slightly higher in this
+   example. No single PM device appears abnormal.
+
+## 16. Next Step
+
+The baseline open-loop noise and device contribution characterization is
+complete.
+
+If the real signal bandwidth and low-frequency cutoff are known, continue with
+closed-loop band-limited integrated noise. If the goal is full OTA
+characterization, the next independent analysis is CMRR, followed by PSRR+ and
+PSRR-.

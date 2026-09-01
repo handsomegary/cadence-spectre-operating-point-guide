@@ -67,6 +67,7 @@ paths with placeholders such as:
 - Measuring rise/fall time, slew rate, settling time, overshoot, and undershoot
 - Automating open-loop noise simulations
 - Calculating input-referred noise, white-noise floor, 1/f corner, and integrated RMS noise
+- Interpreting device noise contribution ranking and optimization priority
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup
 - Characterizing a five-transistor OTA with ICMR, output swing, DC gain,

@@ -25,6 +25,10 @@ paths with placeholders such as:
   - [English](docs/annotate-region.en.md)
   - [Traditional Chinese](docs/annotate-region.zh-TW.md)
   - [Simplified Chinese](docs/annotate-region.zh-CN.md)
+- Chapter 3, OTA characterization workflow:
+  - [English](docs/03-five-transistor-ota-characterization.en.md)
+  - [Traditional Chinese](docs/03-five-transistor-ota-characterization.zh-TW.md)
+  - [Simplified Chinese](docs/03-five-transistor-ota-characterization.zh-CN.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
 - AI customization:
@@ -39,6 +43,9 @@ paths with placeholders such as:
 - Finding and reading `oppoint.lis`
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup
+- Characterizing a five-transistor OTA with ICMR, output swing, DC gain,
+  linear input range, AC response, STB stability, transient settling, slew rate,
+  and safe shutdown steps
 - Checking MOS operating regions and saturation margin
 - Saving simulation results safely
 - Troubleshooting common Spectre/ADE issues

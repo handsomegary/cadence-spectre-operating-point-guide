@@ -30,13 +30,17 @@ Ask me for these values if needed:
 - Model library path and process corner names
 - Whether the user wants schematic annotation fields saved to an .as file
 - Which five DC operating-point fields should appear on the schematic
+- Which OTA characterization metrics should be included, such as ICMR, output
+  swing, DC gain, input linear range, AC bandwidth, UGF, STB phase margin,
+  transient settling, rise/fall time, slew rate, CMRR, PSRR, noise, or corners
 
 Then generate:
 1. A privacy-safe public version using placeholders.
 2. A private local version using my actual paths.
 3. A checklist for verifying that oppoint.lis was generated.
 4. A schematic annotation guide for displaying MOS region and key DC OP values.
-5. A troubleshooting section for missing oppoint.lis, undefined models,
+5. A characterization workflow for an OTA or amplifier testbench.
+6. A troubleshooting section for missing oppoint.lis, undefined models,
    annotation fields not appearing, locked CDS.log, and abnormal MOS operating
    points.
 
@@ -65,6 +69,9 @@ The SOP should cover:
 - Opening View -> Annotations -> Setup
 - Applying annotation settings separately to NMOS and PMOS devices
 - Saving and loading annotation setup files
+- Setting up OTA characterization simulations
+- Explaining AC source normalization versus real large-signal input swing
+- Measuring STB phase margin and transient settling metrics
 - Saving ADE state
 - Backing up important oppoint.lis files with condition-specific names
 ```

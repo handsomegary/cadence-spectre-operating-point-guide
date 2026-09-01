@@ -1,36 +1,36 @@
-# 第 5 章：Five-Transistor OTA Characterization Workflow
+# 第 6 章：Five-Transistor OTA Characterization Workflow
 
-本章整理一個通用的 five-transistor one-stage OTA characterization 流程，適用於
-Cadence Virtuoso ADE 與 Spectre。
+本章整理一个通用的 five-transistor one-stage OTA characterization 流程，适用于
+Cadence Virtuoso ADE 与 Spectre。
 
-原始素材包含特定 project 名稱、路徑、device label 與範例數值。本公開版本保留工程方法，
-但將可能涉及隱私或環境資訊的內容改成通用占位字。
+原始素材包含特定 project 名称、路径、device label 与示例数值。本公开版本保留工程方法，
+但将可能涉及隐私或环境信息的内容改成通用占位符。
 
-## 1. 範圍
+## 1. 范围
 
 本流程包含：
 
 1. Input common-mode range, ICMR
 2. Output swing
-3. DC differential gain 與 input linear range
+3. DC differential gain 与 input linear range
 4. Open-loop AC gain、bandwidth、unity-gain frequency
 5. STB stability analysis
 6. Unity-gain buffer large-signal transient response
 7. Slew rate、rise/fall time、overshoot、1% settling time
-8. 為什麼 AC magnitude normalization 不等於真實 large-signal input swing
-9. Virtuoso、MobaXterm、VMware、Windows 的安全關閉流程
-10. 後續建議 characterization 項目
+8. 为什么 AC magnitude normalization 不等于真实 large-signal input swing
+9. Virtuoso、MobaXterm、VMware、Windows 的安全关闭流程
+10. 后续建议 characterization 项目
 
-最重要的觀念：
+最重要的观念：
 
 ```text
-AC magnitude 是 small-signal normalization，不是真實加在 nonlinear transistor
+AC magnitude 是 small-signal normalization，不是真实加在 nonlinear transistor
 circuit 上的 physical input swing。
 ```
 
 ## 2. 通用 Testbench
 
-占位字範例：
+占位符示例：
 
 ```text
 Circuit type:        five-transistor one-stage OTA
@@ -51,7 +51,7 @@ PMOS current-mirror load:    <pmos-load-left>, <pmos-load-right>
 NMOS tail current source:    <nmos-tail>
 ```
 
-原始範例使用：
+原始示例使用：
 
 ```text
 VDD = 1.2 V
@@ -59,12 +59,12 @@ VCM = 0.8 V
 CLOAD = 100 fF
 ```
 
-這些是範例數值，不是所有設計都該採用的固定規格。
+这些是示例数值，不是所有设计都该采用的固定规格。
 
 ## 3. Input Common-Mode Range
 
-目的：在 `Vin+ = VCM`、`Vin- = VCM` 時，找出關鍵 MOS 仍維持目標工作區的 `VCM`
-範圍。
+目的：在 `Vin+ = VCM`、`Vin- = VCM` 时，找出关键 MOS 仍维持目标工作区的 `VCM`
+范围。
 
 在 ADE 建立 design variable：
 
@@ -72,7 +72,7 @@ CLOAD = 100 fF
 VCM
 ```
 
-執行 DC sweep：
+执行 DC sweep：
 
 ```text
 Analysis:          dc
@@ -82,7 +82,7 @@ Stop:              VDD
 Step:              10 mV, or a suitable resolution
 ```
 
-儲存並觀察 OP parameters：
+保存并观察 OP parameters：
 
 ```text
 tail device:       vds, vdsat, region
@@ -90,13 +90,13 @@ input device:      vds, vdsat, region
 load device:       vds, vdsat, region
 ```
 
-NMOS 飽和條件可用：
+NMOS 饱和条件可用：
 
 ```text
 VDS >= VDSAT
 ```
 
-PMOS 飽和條件可用：
+PMOS 饱和条件可用：
 
 ```text
 |VDS| >= |VDSAT|
@@ -105,7 +105,7 @@ PMOS 飽和條件可用：
 低端 ICMR 常由 tail current source 限制。高端 ICMR 可能由 input pair、active load，
 或 supply rail 限制。
 
-範例結果：
+示例结果：
 
 ```text
 Practical ICMR: about 0.711 V to 1.2 V
@@ -114,16 +114,16 @@ Nominal VCM selected for later tests: 0.8 V
 
 ## 4. Output Swing
 
-目的：強迫 `Vout` 從低到高 sweep，找出上下兩側輸出相關 MOS 何時離開 saturation。
+目的：强迫 `Vout` 从低到高 sweep，找出上下两侧输出相关 MOS 何时离开 saturation。
 
-設定：
+设置：
 
 ```text
 Vin+ = <nominal-vcm>
 Vin- = <nominal-vcm>
 ```
 
-在 `Vout` 與 ground 之間加一顆 ideal DC voltage source：
+在 `Vout` 与 ground 之间加一颗 ideal DC voltage source：
 
 ```text
 Source name:       <vout-test-source>
@@ -131,10 +131,10 @@ DC value:          VOUT_TEST
 Connection:        Vout to GND
 ```
 
-Output load capacitor 也應接在 `Vout` 與 ground 之間。測試電壓源和負載電容是並聯，
-不要誤接成串聯。
+Output load capacitor 也应接在 `Vout` 与 ground 之间。测试电压源和负载电容是并联，
+不要误接成串联。
 
-執行 DC sweep：
+执行 DC sweep：
 
 ```text
 Sweep variable:    VOUT_TEST
@@ -142,14 +142,14 @@ Start:             0 V
 Stop:              VDD
 ```
 
-觀察：
+观察：
 
 ```text
 input-side output device:    vds, vdsat, region
 active-load output device:   vds, vdsat, region
 ```
 
-範例結果：
+示例结果：
 
 ```text
 Vout,min: about 0.346 V
@@ -159,9 +159,9 @@ Open-loop quiescent output: about 0.704 V
 Approximate symmetric swing around Q: about +/-0.326 V, or 0.652 Vpp
 ```
 
-## 5. DC Differential Gain 與 Input Linear Range
+## 5. DC Differential Gain 与 Input Linear Range
 
-目的：sweep differential input voltage，量 `Vout` 對 `VID` 的 local slope。
+目的：sweep differential input voltage，量 `Vout` 对 `VID` 的 local slope。
 
 使用：
 
@@ -171,7 +171,7 @@ Vin+ = VCM + VID/2
 Vin- = VCM - VID/2
 ```
 
-執行 DC sweep：
+执行 DC sweep：
 
 ```text
 Sweep variable:    VID
@@ -180,7 +180,7 @@ Stop:              +10 mV
 Step:              0.1 mV, or suitable resolution
 ```
 
-畫：
+画：
 
 ```text
 Vout vs VID
@@ -192,10 +192,10 @@ Vout vs VID
 deriv(VS("/vout"))
 ```
 
-DC sweep waveform 建議使用 `VS("/vout")`。某些 ADE 環境中，`VDC("/vout")` 可能只取回
-scalar，無法正確做 `deriv`。
+DC sweep waveform 建议使用 `VS("/vout")`。某些 ADE 环境中，`VDC("/vout")` 可能只取回
+scalar，无法正确做 `deriv`。
 
-在 `VID = 0`，範例結果：
+在 `VID = 0`，示例结果：
 
 ```text
 DC gain: about 31.4 V/V, or 29.9 dB
@@ -207,9 +207,9 @@ DC gain: about 31.4 V/V, or 29.9 dB
 Allowed gain = 0.95 * A0
 ```
 
-找 `deriv(VS("/vout"))` 和該數值的左右交點。
+找 `deriv(VS("/vout"))` 和该数值的左右交点。
 
-範例：
+示例：
 
 ```text
 A0 = 31.4 V/V
@@ -218,8 +218,8 @@ A0 = 31.4 V/V
 Total width: about 7.3 mV
 ```
 
-single-ended five-transistor OTA 出現不對稱是正常的，current mirror、finite output
-resistance、bias point 都會影響 transfer curve。
+single-ended five-transistor OTA 出现不对称是正常的，current mirror、finite output
+resistance、bias point 都会影响 transfer curve。
 
 ## 6. Open-Loop AC Analysis
 
@@ -232,7 +232,7 @@ Vin+ DC = <nominal-vcm>
 Vin- DC = <nominal-vcm>
 ```
 
-差動 AC normalization：
+差动 AC normalization：
 
 ```text
 Vin+ AC magnitude = 0.5
@@ -248,7 +248,7 @@ Vin- AC phase     = 180 deg
 Vid,ac = +0.5 - (-0.5) = 1 V
 ```
 
-執行 AC sweep：
+执行 AC sweep：
 
 ```text
 Analysis:           ac
@@ -258,13 +258,13 @@ Stop:               1e10 Hz
 Points/decade:      100
 ```
 
-當 `Vid,ac = 1`，gain 可直接畫：
+当 `Vid,ac = 1`，gain 可直接画：
 
 ```text
 dB20(VF("/vout"))
 ```
 
-範例結果：
+示例结果：
 
 ```text
 Low-frequency gain:    about 31.43 V/V, or 29.95 dB
@@ -275,19 +275,19 @@ Open-loop phase at UGF: about -101.05 deg
 Rough open-loop PM estimate: about 78.95 deg
 ```
 
-正式 closed-loop stability 請用 STB。
+正式 closed-loop stability 请用 STB。
 
-## 7. AC Magnitude 不是真實 Input Swing
+## 7. AC Magnitude 不是真实 Input Swing
 
-如果真實 5% linear input range 只有幾 mV，看到 `AC magnitude = 0.5` 很容易覺得奇怪。
-但這不衝突。
+如果真实 5% linear input range 只有几 mV，看到 `AC magnitude = 0.5` 很容易觉得奇怪。
+但这不冲突。
 
-Spectre AC analysis 大致分成兩步：
+Spectre AC analysis 大致分成两步：
 
 1. 求 DC operating point。
-2. 在該 operating point 附近線性化 nonlinear transistor network。
+2. 在该 operating point 附近线性化 nonlinear transistor network。
 
-AC analysis 解的是由下列 local quantities 組成的 small-signal network：
+AC analysis 解的是由下列 local quantities 组成的 small-signal network：
 
 ```text
 gm
@@ -299,18 +299,18 @@ Cgd
 operating region
 ```
 
-它不是用 `1 V` 差動大訊號去真正驅動 nonlinear circuit。
+它不是用 `1 V` 差动大信号去真正驱动 nonlinear circuit。
 
-在線性化系統中，振幅可以選成方便的 normalization：
+在线性化系统中，振幅可以选成方便的 normalization：
 
 ```text
 If Vid,ac = 1 V, then Vout numerically equals Vout/Vid.
 If Vid,ac = 1 mV, then gain is VF("/vout") / 1e-3.
 ```
 
-經過 scaling 後，transfer function 應該相同。
+经过 scaling 后，transfer function 应该相同。
 
-真實 input swing 必須用以下方式驗證：
+真实 input swing 必须用以下方式验证：
 
 ```text
 DC differential sweep
@@ -318,7 +318,7 @@ transient large-signal simulation
 distortion analysis, if needed
 ```
 
-精準說法：
+精准说法：
 
 ```text
 AC magnitude 是 small-signal linear-model normalization，不是 physical large-signal input swing。
@@ -329,7 +329,7 @@ AC magnitude 是 small-signal linear-model normalization，不是 physical large
 目的：在 unity-feedback configuration 下，正式量 loop gain、crossover frequency、phase
 margin。
 
-Unity-gain buffer 設定範例：
+Unity-gain buffer 设置示例：
 
 ```text
 Non-inverting input:    Vin+ = <nominal-vcm>
@@ -343,7 +343,7 @@ Load:                   <load-capacitance>
 analogLib / iprobe
 ```
 
-不要再加另一顆 ideal DC source 強迫 feedback input。反相端應該由 feedback loop 決定。
+不要再加另一颗 ideal DC source 强迫 feedback input。反相端应该由 feedback loop 决定。
 
 在 ADE：
 
@@ -362,19 +362,19 @@ getData("phaseMargin" ?result "stb_margin")
 getData("phaseMarginFreq" ?result "stb_margin")
 ```
 
-正式範例結果：
+正式示例结果：
 
 ```text
 Loop crossover: about 894.3 MHz
 Phase margin:   about 79.63 deg
 ```
 
-Open-loop AC UGF 和 STB loop crossover 不必完全相同，因為 bias point、loop loading、
-return-ratio definition 可能不同。正式 stability specification 以 STB 為主。
+Open-loop AC UGF 和 STB loop crossover 不必完全相同，因为 bias point、loop loading、
+return-ratio definition 可能不同。正式 stability specification 以 STB 为主。
 
 ## 9. Unity-Gain Buffer Large-Signal Transient
 
-目的：測 large-signal tracking、slew behavior、overshoot、settling time、rise/fall time。
+目的：测 large-signal tracking、slew behavior、overshoot、settling time、rise/fall time。
 
 Topology：
 
@@ -384,7 +384,7 @@ Vin+ uses a pulse source
 CLOAD from Vout to GND
 ```
 
-Input step 範例：
+Input step 示例：
 
 ```text
 Low level:       0.75 V
@@ -395,7 +395,7 @@ Pulse width:     20 ns
 Period:          40 ns
 ```
 
-範例量測輸出：
+示例量测输出：
 
 ```text
 Vout low:         748.731 mV
@@ -411,15 +411,15 @@ Average large-signal closed-loop gain: about 0.962
 Acl = A / (1 + A)
 ```
 
-若 `A = 31.4 V/V`，small-signal follower gain 約 `0.969`。large-signal 實測接近
-`0.962` 合理，因為大訊號過程中 gain 會隨 operating point 改變。
+若 `A = 31.4 V/V`，small-signal follower gain 约 `0.969`。large-signal 实测接近
+`0.962` 合理，因为大信号过程中 gain 会随 operating point 改变。
 
-## 10. Overshoot 與 1% Settling Time
+## 10. Overshoot 与 1% Settling Time
 
-若 finite closed-loop DC gain 造成 static tracking error，settling target 應使用實際 final
+若 finite closed-loop DC gain 造成 static tracking error，settling target 应使用实际 final
 output value，而不是 commanded input value。
 
-範例：
+示例：
 
 ```text
 Final high output:  941.105 mV
@@ -434,7 +434,7 @@ Overshoot:          about 0.20%
 1% band = 0.01 * output step
 ```
 
-範例：
+示例：
 
 ```text
 1% band:            1.924 mV
@@ -443,7 +443,7 @@ Upper bound:        943.029 mV
 1% settling time:   about 0.581 ns
 ```
 
-## 11. Rise Time、Fall Time 與 Effective Slew Rate
+## 11. Rise Time、Fall Time 与 Effective Slew Rate
 
 10-90% rise time：
 
@@ -453,7 +453,7 @@ V90 = VL + 0.9 * (VH - VL)
 tr = t90 - t10
 ```
 
-範例：
+示例：
 
 ```text
 10-90% rise time: about 0.3305 ns, or 331 ps
@@ -467,20 +467,20 @@ SRrise = (V90 - V10) / tr
 SRfall = (V90 - V10) / tf
 ```
 
-範例：
+示例：
 
 ```text
 Effective rising slew:  about 465.6 V/us
 Effective falling slew: about 460.0 V/us
 ```
 
-如果 waveform 沒有明顯 slew-limited linear ramp 或穩定 derivative plateau，不要只把很窄的
-derivative spike 當成正式 slew rate。尖峰可能來自 input-edge feedthrough、Cgd coupling，
+如果 waveform 没有明显 slew-limited linear ramp 或稳定 derivative plateau，不要只把很窄的
+derivative spike 当成正式 slew rate。尖峰可能来自 input-edge feedthrough、Cgd coupling，
 或 numerical derivative artifact。
 
-## 12. 範例 Characterization Summary
+## 12. 示例 Characterization Summary
 
-以下是一組範例量測結果：
+以下是一组示例量测结果：
 
 ```text
 Supply:                                  1.2 V
@@ -505,9 +505,9 @@ Effective rising slew:                   about 465.6 V/us
 Effective falling slew:                  about 460.0 V/us
 ```
 
-## 13. 安全關閉流程
+## 13. 安全关闭流程
 
-如果要換地方、稍後繼續：
+如果要换地方、稍后继续：
 
 ```text
 Virtuoso normal exit
@@ -516,12 +516,12 @@ VMware suspend
 Windows hibernate
 ```
 
-Virtuoso 建議流程：
+Virtuoso 建议流程：
 
-1. 執行 **Check and Save**。
-2. 若需要保存 ADE 設定，使用 **Session -> Save State**。
-3. 正常關閉 ADE、ViVA、Calculator。
-4. 從 CIW 使用 **File -> Exit**。
+1. 执行 **Check and Save**。
+2. 若需要保存 ADE 设置，使用 **Session -> Save State**。
+3. 正常关闭 ADE、ViVA、Calculator。
+4. 从 CIW 使用 **File -> Exit**。
 
 MobaXterm：
 
@@ -535,12 +535,12 @@ VMware Workstation：
 VM -> Power -> Suspend
 ```
 
-若筆電要放進包包移動，建議先 suspend VM，再 hibernate Windows。如果 Virtuoso 是透過
-MobaXterm X11 forwarding 開啟，不要在 Virtuoso 還活著時先關掉 X11 session。
+若笔记本要放进包里移动，建议先 suspend VM，再 hibernate Windows。如果 Virtuoso 是通过
+MobaXterm X11 forwarding 打开，不要在 Virtuoso 还活着时先关闭 X11 session。
 
-## 14. 下一步建議
+## 14. 下一步建议
 
-完成以上項目後，可繼續：
+完成以上项目后，可继续：
 
 ```text
 CMRR
@@ -562,10 +562,10 @@ CMRR = 20 log10(|Ad / Acm|)
 
 其中 `Ad` 是 differential-mode gain，`Acm` 是 common-mode gain。
 
-## 15. 三個重點
+## 15. 三个重点
 
-1. AC source 的 `+0.5` 與 `-0.5` 是 small-signal normalization，不是 physical
+1. AC source 的 `+0.5` 与 `-0.5` 是 small-signal normalization，不是 physical
    large-signal input swing。
-2. 真實 input swing 必須用 DC 或 transient nonlinear simulation 驗證。
-3. AC analysis 給的是 bias point 附近的 local transfer function；只有真實訊號仍在
-   small-signal region 時，才能線性縮放到真實小訊號電路。
+2. 真实 input swing 必须用 DC 或 transient nonlinear simulation 验证。
+3. AC analysis 给的是 bias point 附近的 local transfer function；只有真实信号仍在
+   small-signal region 时，才能线性缩放到真实小信号电路。

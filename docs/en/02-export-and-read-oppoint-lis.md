@@ -278,7 +278,7 @@ The GUI is convenient for quick inspection. `oppoint.lis` is better for saving,
 searching, comparing, and version tracking.
 
 For a dedicated schematic annotation workflow, see
-[Chapter 4: Schematic DC OP Annotation](04-schematic-op-annotation.md).
+[Chapter 5: Schematic DC OP Annotation](05-schematic-op-annotation.md).
 
 ## 11. Save One Simulation Result
 

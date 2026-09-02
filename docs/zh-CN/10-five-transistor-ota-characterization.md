@@ -550,9 +550,9 @@ Temperature sweep
 Monte Carlo / mismatch
 ```
 
-Open-loop noise、CMRR automation 与 PSRR automation 都已有独立章节。下一个尚未
-独立整理的 workflow 是用于 corners 与 variation planning 的 integrated baseline
-summary table。
+Open-loop noise、CMRR automation 与 PSRR automation 都已有独立章节。请接着看
+[第 11 章：Baseline Summary and PVT Automation](11-baseline-summary-and-pvt-automation.md)，
+用于 corners 与 variation planning。
 
 CMRR：
 

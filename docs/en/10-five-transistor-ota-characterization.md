@@ -567,7 +567,8 @@ Monte Carlo / mismatch
 ```
 
 Dedicated chapters now cover open-loop noise, CMRR automation, and PSRR
-automation. The next missing workflow is an integrated baseline summary table
+automation. Continue with
+[Chapter 11: Baseline Summary and PVT Automation](11-baseline-summary-and-pvt-automation.md)
 for corners and variation planning.
 
 CMRR uses:

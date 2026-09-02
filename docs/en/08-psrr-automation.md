@@ -435,7 +435,7 @@ notes, not in a public tutorial.
 
 ## 15. Next Step
 
-PSRR baseline characterization is complete. The next useful artifact is an
-integrated baseline summary table covering DC, AC, STB, transient, noise, CMRR,
-and PSRR. Use that table to plan PVT corners, load sweep, VCM-dependent PSRR,
-and Monte Carlo analysis.
+PSRR baseline characterization is complete. Continue with
+[Chapter 11: Baseline Summary and PVT Automation](11-baseline-summary-and-pvt-automation.md)
+to freeze the nominal baseline and plan PVT corners, load sweep,
+VCM-dependent PSRR, and Monte Carlo analysis.

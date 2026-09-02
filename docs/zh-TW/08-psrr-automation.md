@@ -421,6 +421,7 @@ cp -p -- \
 
 ## 15. 下一步
 
-PSRR baseline characterization 已完成。下一個有用的 artifact 是整合 DC、AC、STB、
-transient、noise、CMRR 與 PSRR 的 baseline summary table，再用該表規劃 PVT corners、
-load sweep、VCM-dependent PSRR 與 Monte Carlo analysis。
+PSRR baseline characterization 已完成。請接著看
+[第 11 章：Baseline Summary and PVT Automation](11-baseline-summary-and-pvt-automation.md)，
+先 freeze nominal baseline，再規劃 PVT corners、load sweep、VCM-dependent PSRR 與
+Monte Carlo analysis。

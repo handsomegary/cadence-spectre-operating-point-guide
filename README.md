@@ -28,6 +28,7 @@ paths with placeholders such as:
   - [Chapter 8: PSRR automation](docs/en/08-psrr-automation.md)
   - [Chapter 9: Schematic DC OP annotation](docs/en/09-schematic-op-annotation.md)
   - [Chapter 10: Five-transistor OTA characterization](docs/en/10-five-transistor-ota-characterization.md)
+  - [Chapter 11: Baseline summary and PVT automation](docs/en/11-baseline-summary-and-pvt-automation.md)
 - Traditional Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-TW/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-TW/02-export-and-read-oppoint-lis.md)
@@ -39,6 +40,7 @@ paths with placeholders such as:
   - [Chapter 8: PSRR automation](docs/zh-TW/08-psrr-automation.md)
   - [Chapter 9: Schematic DC OP annotation](docs/zh-TW/09-schematic-op-annotation.md)
   - [Chapter 10: Five-transistor OTA characterization](docs/zh-TW/10-five-transistor-ota-characterization.md)
+  - [Chapter 11: Baseline summary and PVT automation](docs/zh-TW/11-baseline-summary-and-pvt-automation.md)
 - Simplified Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-CN/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-CN/02-export-and-read-oppoint-lis.md)
@@ -50,8 +52,14 @@ paths with placeholders such as:
   - [Chapter 8: PSRR automation](docs/zh-CN/08-psrr-automation.md)
   - [Chapter 9: Schematic DC OP annotation](docs/zh-CN/09-schematic-op-annotation.md)
   - [Chapter 10: Five-transistor OTA characterization](docs/zh-CN/10-five-transistor-ota-characterization.md)
+  - [Chapter 11: Baseline summary and PVT automation](docs/zh-CN/11-baseline-summary-and-pvt-automation.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
+- Script templates:
+  - [`scripts/pvt/run_process_corners.sh`](scripts/pvt/run_process_corners.sh)
+  - [`scripts/pvt/refine_vid_linearity.sh`](scripts/pvt/refine_vid_linearity.sh)
+  - [`scripts/pvt/analyze_process_corner_transients.sh`](scripts/pvt/analyze_process_corner_transients.sh)
+  - [`scripts/pvt/build_process_corner_report.sh`](scripts/pvt/build_process_corner_report.sh)
 - AI customization:
   - [AI customization prompt](prompts/customize-this-guide.md)
 
@@ -76,6 +84,8 @@ paths with placeholders such as:
 - Interpreting device noise contribution ranking and optimization priority
 - Automating CMRR simulations and extracting common-mode rejection bandwidth
 - Automating PSRR+ and PSRR- simulations and comparing supply rejection
+- Building a frozen baseline summary for DC, AC, STB, transient, noise, CMRR, and PSRR
+- Running deterministic process-corner automation with reusable shell templates
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup
 - Characterizing a five-transistor OTA with ICMR, output swing, DC gain,

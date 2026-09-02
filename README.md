@@ -25,8 +25,9 @@ paths with placeholders such as:
   - [Chapter 5: Closed-loop transient automation](docs/en/05-closed-loop-transient-automation.md)
   - [Chapter 6: Open-loop noise automation](docs/en/06-open-loop-noise-automation.md)
   - [Chapter 7: CMRR automation](docs/en/07-cmrr-automation.md)
-  - [Chapter 8: Schematic DC OP annotation](docs/en/08-schematic-op-annotation.md)
-  - [Chapter 9: Five-transistor OTA characterization](docs/en/09-five-transistor-ota-characterization.md)
+  - [Chapter 8: PSRR automation](docs/en/08-psrr-automation.md)
+  - [Chapter 9: Schematic DC OP annotation](docs/en/09-schematic-op-annotation.md)
+  - [Chapter 10: Five-transistor OTA characterization](docs/en/10-five-transistor-ota-characterization.md)
 - Traditional Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-TW/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-TW/02-export-and-read-oppoint-lis.md)
@@ -35,8 +36,9 @@ paths with placeholders such as:
   - [Chapter 5: Closed-loop transient automation](docs/zh-TW/05-closed-loop-transient-automation.md)
   - [Chapter 6: Open-loop noise automation](docs/zh-TW/06-open-loop-noise-automation.md)
   - [Chapter 7: CMRR automation](docs/zh-TW/07-cmrr-automation.md)
-  - [Chapter 8: Schematic DC OP annotation](docs/zh-TW/08-schematic-op-annotation.md)
-  - [Chapter 9: Five-transistor OTA characterization](docs/zh-TW/09-five-transistor-ota-characterization.md)
+  - [Chapter 8: PSRR automation](docs/zh-TW/08-psrr-automation.md)
+  - [Chapter 9: Schematic DC OP annotation](docs/zh-TW/09-schematic-op-annotation.md)
+  - [Chapter 10: Five-transistor OTA characterization](docs/zh-TW/10-five-transistor-ota-characterization.md)
 - Simplified Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-CN/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-CN/02-export-and-read-oppoint-lis.md)
@@ -45,8 +47,9 @@ paths with placeholders such as:
   - [Chapter 5: Closed-loop transient automation](docs/zh-CN/05-closed-loop-transient-automation.md)
   - [Chapter 6: Open-loop noise automation](docs/zh-CN/06-open-loop-noise-automation.md)
   - [Chapter 7: CMRR automation](docs/zh-CN/07-cmrr-automation.md)
-  - [Chapter 8: Schematic DC OP annotation](docs/zh-CN/08-schematic-op-annotation.md)
-  - [Chapter 9: Five-transistor OTA characterization](docs/zh-CN/09-five-transistor-ota-characterization.md)
+  - [Chapter 8: PSRR automation](docs/zh-CN/08-psrr-automation.md)
+  - [Chapter 9: Schematic DC OP annotation](docs/zh-CN/09-schematic-op-annotation.md)
+  - [Chapter 10: Five-transistor OTA characterization](docs/zh-CN/10-five-transistor-ota-characterization.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
 - AI customization:
@@ -72,6 +75,7 @@ paths with placeholders such as:
 - Calculating input-referred noise, white-noise floor, 1/f corner, and integrated RMS noise
 - Interpreting device noise contribution ranking and optimization priority
 - Automating CMRR simulations and extracting common-mode rejection bandwidth
+- Automating PSRR+ and PSRR- simulations and comparing supply rejection
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup
 - Characterizing a five-transistor OTA with ICMR, output swing, DC gain,

@@ -380,5 +380,5 @@ cp -p -- \
 
 ## 14. 下一步
 
-CMRR baseline characterization 已完成。建立并验证 checkpoints 后，下一个分析是 PSRR+，
-之后是 PSRR-。
+CMRR baseline characterization 已完成。建立并验证 checkpoints 后，请接着看
+[第 8 章：PSRR Automation](08-psrr-automation.md)。

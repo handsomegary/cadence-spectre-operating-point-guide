@@ -1,4 +1,4 @@
-# Chapter 9: Five-Transistor OTA Characterization Workflow
+# Chapter 10: Five-Transistor OTA Characterization Workflow
 
 This chapter describes a practical characterization flow for a generic
 five-transistor, one-stage OTA in Cadence Virtuoso ADE with Spectre.
@@ -560,17 +560,15 @@ was launched through X11 forwarding.
 After the items above, continue with:
 
 ```text
-CMRR
-PSRR+
-PSRR-
 Power consumption
 PVT corners
 Temperature sweep
 Monte Carlo / mismatch
 ```
 
-Dedicated chapters now cover open-loop noise and CMRR automation. PSRR is the
-next missing rejection-ratio workflow.
+Dedicated chapters now cover open-loop noise, CMRR automation, and PSRR
+automation. The next missing workflow is an integrated baseline summary table
+for corners and variation planning.
 
 CMRR uses:
 

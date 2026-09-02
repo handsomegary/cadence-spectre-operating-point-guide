@@ -393,4 +393,4 @@ cp -p -- \
 ## 14. Next Step
 
 CMRR baseline characterization is complete. After creating and verifying
-checkpoints, continue with PSRR+ and then PSRR-.
+checkpoints, continue with [Chapter 8: PSRR Automation](08-psrr-automation.md).

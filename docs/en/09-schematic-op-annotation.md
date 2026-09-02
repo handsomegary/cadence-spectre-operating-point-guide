@@ -1,4 +1,4 @@
-# Chapter 8: Schematic DC OP Annotation
+# Chapter 9: Schematic DC OP Annotation
 
 This guide explains how to display MOS DC operating-point parameters such as
 `region`, `gm`, `vgs`, `vds`, and `vdsat` directly on a Cadence Virtuoso

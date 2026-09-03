@@ -325,7 +325,8 @@ output artifacts，仍然是 failure。
 ## 13. Completion State and Next Chapter
 
 本阶段记录 deterministic pre-Monte-Carlo characterization workflow。Deterministic
-PVT campaign accepted 之后，下一章可以记录 offset、performance 与
+PVT campaign accepted 之后，接着看
+[第 13 章](13-monte-carlo-automation-and-reporting.md)，整理 offset、performance 与
 correlated-transient Monte Carlo automation，包含 random-stream correlation checks。
 
 Post-simulation review 会等到有真正且已清理过的 PVT reports 后再进行。

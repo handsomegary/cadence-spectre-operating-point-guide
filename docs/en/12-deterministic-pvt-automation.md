@@ -340,9 +340,10 @@ Keep for reproducibility:
 ## 13. Completion State and Next Chapter
 
 This stage documents the deterministic pre-Monte-Carlo characterization
-workflow. After the deterministic PVT campaign is accepted, the next chapter can
-document offset, performance, and correlated-transient Monte Carlo automation,
-including random-stream correlation checks.
+workflow. After the deterministic PVT campaign is accepted, continue with
+[Chapter 13](13-monte-carlo-automation-and-reporting.md) for offset,
+performance, and correlated-transient Monte Carlo automation, including
+random-stream correlation checks.
 
 Post-simulation review remains intentionally deferred until real sanitized PVT
 reports are available.

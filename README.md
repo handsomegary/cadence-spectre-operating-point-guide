@@ -30,6 +30,8 @@ paths with placeholders such as:
   - [Chapter 10: Five-transistor OTA characterization](docs/en/10-five-transistor-ota-characterization.md)
   - [Chapter 11: Baseline summary and PVT automation](docs/en/11-baseline-summary-and-pvt-automation.md)
   - [Chapter 12: Deterministic PVT automation](docs/en/12-deterministic-pvt-automation.md)
+  - [Chapter 13: Monte Carlo automation and reporting](docs/en/13-monte-carlo-automation-and-reporting.md)
+  - [Chapter 14: Final pre-simulation sign-off](docs/en/14-final-pre-simulation-signoff.md)
 - Traditional Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-TW/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-TW/02-export-and-read-oppoint-lis.md)
@@ -43,6 +45,8 @@ paths with placeholders such as:
   - [Chapter 10: Five-transistor OTA characterization](docs/zh-TW/10-five-transistor-ota-characterization.md)
   - [Chapter 11: Baseline summary and PVT automation](docs/zh-TW/11-baseline-summary-and-pvt-automation.md)
   - [Chapter 12: Deterministic PVT automation](docs/zh-TW/12-deterministic-pvt-automation.md)
+  - [Chapter 13: Monte Carlo automation and reporting](docs/zh-TW/13-monte-carlo-automation-and-reporting.md)
+  - [Chapter 14: Final pre-simulation sign-off](docs/zh-TW/14-final-pre-simulation-signoff.md)
 - Simplified Chinese:
   - [Chapter 1: DC operating-point simulation and automation](docs/zh-CN/01-dc-operating-point-simulation.md)
   - [Chapter 2: Export and read `oppoint.lis`](docs/zh-CN/02-export-and-read-oppoint-lis.md)
@@ -56,6 +60,8 @@ paths with placeholders such as:
   - [Chapter 10: Five-transistor OTA characterization](docs/zh-CN/10-five-transistor-ota-characterization.md)
   - [Chapter 11: Baseline summary and PVT automation](docs/zh-CN/11-baseline-summary-and-pvt-automation.md)
   - [Chapter 12: Deterministic PVT automation](docs/zh-CN/12-deterministic-pvt-automation.md)
+  - [Chapter 13: Monte Carlo automation and reporting](docs/zh-CN/13-monte-carlo-automation-and-reporting.md)
+  - [Chapter 14: Final pre-simulation sign-off](docs/zh-CN/14-final-pre-simulation-signoff.md)
 - Template:
   - [`templates/opdump.scs`](templates/opdump.scs)
 - Script templates:
@@ -63,6 +69,12 @@ paths with placeholders such as:
   - [`scripts/pvt/refine_vid_linearity.sh`](scripts/pvt/refine_vid_linearity.sh)
   - [`scripts/pvt/analyze_process_corner_transients.sh`](scripts/pvt/analyze_process_corner_transients.sh)
   - [`scripts/pvt/build_process_corner_report.sh`](scripts/pvt/build_process_corner_report.sh)
+  - [`scripts/monte-carlo/run_monte_carlo_performance_smoke.sh`](scripts/monte-carlo/run_monte_carlo_performance_smoke.sh)
+  - [`scripts/monte-carlo/build_monte_carlo_performance_report.sh`](scripts/monte-carlo/build_monte_carlo_performance_report.sh)
+  - [`scripts/monte-carlo/analyze_monte_carlo_performance_v1.awk`](scripts/monte-carlo/analyze_monte_carlo_performance_v1.awk)
+  - [`scripts/monte-carlo/run_monte_carlo_transient_validation.sh`](scripts/monte-carlo/run_monte_carlo_transient_validation.sh)
+  - [`scripts/monte-carlo/build_monte_carlo_transient_report.sh`](scripts/monte-carlo/build_monte_carlo_transient_report.sh)
+  - [`scripts/monte-carlo/analyze_monte_carlo_transient_v1.awk`](scripts/monte-carlo/analyze_monte_carlo_transient_v1.awk)
 - AI customization:
   - [AI customization prompt](prompts/customize-this-guide.md)
 
@@ -91,6 +103,9 @@ paths with placeholders such as:
 - Running deterministic process-corner automation with reusable shell templates
 - Separating deterministic PVT automation into `prepare`, `core`, and `full` modes
 - Validating generated OCEAN scripts, adopted results, transient extraction, and report checksums
+- Running Monte Carlo performance smoke and production campaigns
+- Building Monte Carlo performance and correlated-transient statistical reports
+- Freezing a pre-simulation handoff state before post-simulation begins
 - Annotating MOS `region`, `gm`, `vgs`, `vds`, and `vdsat` on schematics
 - Saving and reloading Virtuoso annotation setup
 - Characterizing a five-transistor OTA with ICMR, output swing, DC gain,

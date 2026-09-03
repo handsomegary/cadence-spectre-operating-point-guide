@@ -419,6 +419,7 @@ and unpublished circuit names are sanitized.
 
 ## 14. Next Step
 
-The baseline is ready for deterministic PVT. Start with the `prepare` mode,
-inspect the generated OCEAN scripts, run the `core` process matrix, and only
-then expand to the full analysis set.
+The baseline is ready for deterministic PVT. Continue with
+[Chapter 12](12-deterministic-pvt-automation.md) to run the `prepare`, `core`,
+and `full` modes, validate generated OCEAN scripts, refine VID linearity,
+extract transient metrics, and build the consolidated process-corner report.

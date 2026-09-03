@@ -407,5 +407,7 @@ unpublished circuit names 都完成 sanitization。
 
 ## 14. 下一步
 
-Baseline 已准备好进入 deterministic PVT。先用 `prepare` mode 检查 generated OCEAN
-scripts，再跑 `core` process matrix，最后才扩展到 full analysis set。
+Baseline 已准备好进入 deterministic PVT。接着看
+[第 12 章](12-deterministic-pvt-automation.md)，依序执行 `prepare`、`core` 与
+`full` modes，验证 generated OCEAN scripts，细化 VID linearity，提取 transient
+metrics，并建立 consolidated process-corner report。
